@@ -112,18 +112,18 @@ if __name__ == '__main__':
     save_audio("processed_audio1.mp3", equalized_audio, sr)
 
     # Применение реверберации
-    reverbed_audio = reverb(equalized_audio, sr, decay=0.6, delay=0.03, num_echoes=5)
+    reverbed_audio = reverb(audio, sr, decay=0.6, delay=0.03, num_echoes=5)
     plot_audio(reverbed_audio, sr)
 
     save_audio("processed_audio2.mp3", reverbed_audio, sr)
 
     # Применение режекторного фильтра (Notch) для удаления шума 50 Гц
-    notched_audio = notch_filter(reverbed_audio, sr, freq=50, quality=30)
+    notched_audio = notch_filter(audio, sr, freq=50, quality=30)
     plot_audio(notched_audio, sr)
 
     save_audio("processed_audio3.mp3", notched_audio, sr)
 
-    declicked_audio = remove_clicks(notched_audio, kernel_size=5)
+    declicked_audio = remove_clicks(audio, kernel_size=5)
     plot_audio(declicked_audio, sr)
 
     save_audio("processed_audio4.mp3", declicked_audio, sr)
